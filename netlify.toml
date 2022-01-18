@@ -1,6 +1,16 @@
 [build]
-command = "ng build && ng run {projectName}:serverless:production"
-publish = "dist/{projectName}/browser"
+command = "ng build && ng run serverless-workshop:serverless:production"
+publish = "dist/serverless-workshop/browser"
 
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+  
 [[plugins]]
 package = "@netlify/plugin-angular-universal"
+
+[dev]
+  command = "npm run start"
+  functions = "netlify/functions"
+
